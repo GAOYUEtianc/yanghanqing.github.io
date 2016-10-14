@@ -8,7 +8,7 @@ $(document).ready(function() {
         splitFlag = "https://";
     }
     var user = webURL.split(splitFlag)[1].split(".")[0];
-    user = 'yanghanqing';
+    //user = 'yanghanqing';
     blogListURL = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/contents/blog';
     issuesList = 'https://api.github.com/repos/' + user + '/' + user + '.github.io/issues';
     issuesHTML = 'https://github.com/' + user + '/' + user + '.github.io/issues'
@@ -180,7 +180,8 @@ function setComment(commentURL) {
         for (var i = 0; i < json.length; i++) {
             var avatar_url = json[i].user.avatar_url; // avatar_url
             var user = json[i].user.login;
-            var updated_at = json[i].updated_at;
+            //var updated_at = json[i].updated_at;
+            var updated_at = new Date(json[i].updated_at).toLocaleString();
             var body = json[i].body;
 
             // add blog list elements
