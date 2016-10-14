@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+    作者: yanghanqing
+    开源协议: MIT
+    项目地址 https://github.com/YangHanqing/tinyblog
+-->
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="tinyblog" content="v1.2">
+
+    <title>TinyBlog</title>
+
+    <!-- Bootstrap & jQuery -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="mystyle2.css" rel="stylesheet">
+
+
+    <!--markdown-->
+    <link rel="stylesheet" href="./editor.md/css/editormd.preview.min.css" />
+    <script src="./editor.md/lib/marked.min.js"></script>
+    <script src="./editor.md/lib/prettify.min.js"></script>
+    <script src="./editor.md/lib/raphael.min.js"></script>
+    <script src="./editor.md/lib/underscore.min.js"></script>
+    <script src="./editor.md/lib/sequence-diagram.min.js"></script>
+    <script src="./editor.md/lib/flowchart.min.js"></script>
+    <script src="./editor.md/lib/jquery.flowchart.min.js"></script>
+    <script src="./editor.md/editormd.min.js"></script>
+    <!--markdown-->
+
+    <script src="./js/core.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="header">BlogName</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Title -->
+                <h1 id="title">About Me</h1>
+                <!-- Date/Time -->
+                <!--<p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>-->
+                <!-- Article -->
+                <div id="article"> This is article </div>
+                <!-- Blog Comments -->
+                <div class="panel panel-white post " id="comments">
+                    <div class="post-footer">
+                        <div class="input-group">
+                            <input id="comment_txt" class="form-control" placeholder="Add a comment" type="text">
+                            <span class="input-group-addon">
+                                <a href="#"><i class="fa fa-edit" onclick="login()"></i></a>  
+                            </span>
+                        </div>
+                        <ul class="comments-list" id="commentsList">
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+
+
+
+
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-unstyled" id="nav">
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><a href="https://github.com/YangHanqing/tinyblog">Copyright &copy; YangHanqing 2016</a></p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+        <!--login-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">登录</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txt_departmentlevel">Username</label>
+                            <input type="text" name="txt_departmentlevel" class="form-control" id="txt_username" placeholder="Github用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_statu">Password</label>
+                            <input type="password" name="txt_statu" class="form-control" id="txt_password" placeholder="Github密码">
+                        </div>
+                        <div class="alert alert-warning" role="alert" id="tips">我们不会获取您的用户名和密码,评论直接通过 HTTPS 与 Github API交互,如果您开启了两步验证,请在博客的Github issues 下添加 Comment</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_subComment" class="btn btn-primary" data-dismiss="modal" onclick="subComment()">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+
+
+
+
+
+</body>
+
+</html>
